@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using MonteCarloCore;
 
 namespace MonteCarloSimulator
 {
@@ -19,10 +13,12 @@ namespace MonteCarloSimulator
 
         private void runSimulationButton_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < 100000; i++)
-            {
-                resultLabel.Text = i.ToString();
-            }
+            MonteCarloEngine.EnqueueNewJob(new SumUpMonteCarloJob(1000));
+            MonteCarloEngine.EnqueueNewJob(new SumUpMonteCarloJob(10000));
+            MonteCarloEngine.EnqueueNewJob(new SumUpMonteCarloJob(100000));
+            MonteCarloEngine.EnqueueNewJob(new SumUpMonteCarloJob(1000000));
+            MonteCarloEngine.EnqueueNewJob(new SumUpMonteCarloJob(10000000));
+            MonteCarloEngine.EnqueueNewJob(new SumUpMonteCarloJob(100000000));
         }
     }
 }

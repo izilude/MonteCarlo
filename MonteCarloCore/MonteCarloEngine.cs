@@ -23,7 +23,7 @@ namespace MonteCarloCore
             }
         }
 
-        private static void EnqueueNewJob(MonteCarloJob newJob)
+        public static void EnqueueNewJob(MonteCarloJob newJob)
         {
             lock (_jobs)
             {

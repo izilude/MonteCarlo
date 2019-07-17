@@ -8,7 +8,7 @@ namespace MonteCarloCore
 {
     public class MonteCarloJob
     {
-        public void Run()
+        public virtual void Run()
         {
             
         }
