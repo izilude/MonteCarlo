@@ -15,7 +15,7 @@ namespace MonteCarloSimulator
         [STAThread]
         static void Main()
         {
-            MonteCarloEngine.Start();
+            JobEngine.Start();
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

@@ -1,7 +1,7 @@
 ﻿
-namespace MonteCarloCore
+namespace MonteCarloCore.Jobs
 {
-    public abstract class MonteCarloJob
+    public abstract class Job
     {
         public static int CurrentId = 0;
 

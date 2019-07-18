@@ -79,15 +79,15 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="OxyPlot.WindowsForms">
+      <Version>1.0.0</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\MonteCarloCore\MonteCarloCore.csproj">
       <Project>{ca9ddd70-7648-4dbc-9242-b26cf7dcca0d}</Project>
       <Name>MonteCarloCore</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="OxyPlot.WindowsForms">
-      <Version>1.0.0</Version>
-    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

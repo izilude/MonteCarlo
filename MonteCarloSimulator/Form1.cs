@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using MonteCarloCore;
+using MonteCarloCore.Jobs;
+using MonteCarloCore.Simulation;
 
 namespace MonteCarloSimulator
 {
@@ -23,55 +25,42 @@ namespace MonteCarloSimulator
 
         private void runSimulationButton_Click(object sender, EventArgs e)
         {
-            CreateTestJob(100000000);
-            CreateTestJob(100000000);
-            CreateTestJob(100000000);
-            CreateTestJob(100000000);
-            CreateTestJob(100000000);
-            CreateTestJob(100000000);
+            var box = new SimulationBox();
+
+            var newMonteCarloJob = new MonteCarloSimulationJob(box);
+            JobEngine.EnqueueNewJob(newMonteCarloJob);
         }
 
-        private void CreateTestJob(int maxNumber)
-        {
-            var newJob = new SumUpMonteCarloJob(maxNumber);
-
-            newJob.StartEvent += NewJob_StartEvent;
-            newJob.StopEvent += NewJob_StopEvent;
-            newJob.ProgressEvent += NewJob_ProgressEvent;
-
-            MonteCarloEngine.EnqueueNewJob(newJob);
-        }
-
-        private void NewJob_ProgressEvent(MonteCarloJob reportingJob)
+        private void NewJob_ProgressEvent(Job reportingJob)
         {
             var jobDeloegate = new JobHandler(OnProgressMethod);
             this.Invoke(jobDeloegate, reportingJob);
         }
 
-        private void NewJob_StopEvent(MonteCarloJob reportingJob)
+        private void NewJob_StopEvent(Job reportingJob)
         {
             var jobDeloegate = new JobHandler(OnStopMethod);
             this.Invoke(jobDeloegate, reportingJob);
         }
 
-        private void NewJob_StartEvent(MonteCarloJob reportingJob)
+        private void NewJob_StartEvent(Job reportingJob)
         {
             var jobDeloegate = new JobHandler(OnStartMethod);
             this.Invoke(jobDeloegate, reportingJob);
         }
 
-        private void OnProgressMethod(MonteCarloJob reportingJob)
+        private void OnProgressMethod(Job reportingJob)
         {
             var percentComplete = reportingJob.GetPercentComplete();
             _labels[reportingJob.UniqueId % 6].Text = percentComplete.ToString();
         }
 
-        private void OnStartMethod(MonteCarloJob reportingJob)
+        private void OnStartMethod(Job reportingJob)
         {
             _labels[reportingJob.UniqueId % 6].Text = "0";
         }
 
-        private void OnStopMethod(MonteCarloJob reportingJob)
+        private void OnStopMethod(Job reportingJob)
         {
             _labels[reportingJob.UniqueId % 6].Text = "100";
         }
