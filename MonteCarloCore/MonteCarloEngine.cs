@@ -12,7 +12,11 @@ namespace MonteCarloCore
         public static void Start()
         {
             _threads.Add(new MonteCarloEngineThread(_jobs, "Engine Thread 1"));
-            _threads.Add(new MonteCarloEngineThread(_jobs, "Engine Thread 2"));
+            //_threads.Add(new MonteCarloEngineThread(_jobs, "Engine Thread 2"));
+            //_threads.Add(new MonteCarloEngineThread(_jobs, "Engine Thread 3"));
+            //_threads.Add(new MonteCarloEngineThread(_jobs, "Engine Thread 4"));
+            //_threads.Add(new MonteCarloEngineThread(_jobs, "Engine Thread 5"));
+            //_threads.Add(new MonteCarloEngineThread(_jobs, "Engine Thread 6"));
         }
 
         public static void Stop()

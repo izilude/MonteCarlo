@@ -14,18 +14,30 @@ namespace MonteCarloCore
         }
 
         public int MaxNumber;
+        private int _currentIteration = 0;
+        private int _count = 0;
         public double Sum = 0;
 
-        public override void Run()
+        protected override void RunInternal()
         {
-            base.Run();
-
             for (int i = 0; i < MaxNumber; i++)
             {
                 Sum += i;
+                _currentIteration = i;
+                _count++;
+                if (_count > MaxNumber / 20)
+                {
+                    _count = 0;
+                    OnProgress();
+                }
             }
 
             Console.WriteLine(Sum);
+        }
+
+        public override int GetPercentComplete()
+        {
+            return (int)(100.0 * ((double)_currentIteration / MaxNumber));
         }
     }
 }
