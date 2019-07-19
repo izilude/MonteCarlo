@@ -5,8 +5,6 @@ namespace MonteCarloCore.Simulation
 {
     public class SimulationBox
     {
-        Random _rand = new Random();
-
         public SimulationBox(double xLength, double yLength, int divisions)
         {
             PotentialEnergy = new double[divisions,divisions];
@@ -25,7 +23,7 @@ namespace MonteCarloCore.Simulation
 
         public SimulationObject GetRandomObject()
         {
-            int index = _rand.Next(MonteCarloObjects.Count - 1);   
+            int index = JobEngine.Rand.Next(MonteCarloObjects.Count);   
             return MonteCarloObjects[index];
         }
 

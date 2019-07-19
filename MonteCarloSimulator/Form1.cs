@@ -34,7 +34,14 @@ namespace MonteCarloSimulator
             UpdateMonteCarloPlot(box);
 
             var newMonteCarloJob = new MonteCarloSimulationJob(box);
+            newMonteCarloJob.SimulationBoxChangedEvent += NewMonteCarloJob_SimulationBoxChangedEvent;
             JobEngine.EnqueueNewJob(newMonteCarloJob);
+        }
+
+        private void NewMonteCarloJob_SimulationBoxChangedEvent(SimulationBox box)
+        {
+            var deleg = new SimulationBoxHandler(UpdateMonteCarloPlot);
+            this.Invoke(deleg, box);
         }
 
         private void UpdateMonteCarloPlot(SimulationBox box)

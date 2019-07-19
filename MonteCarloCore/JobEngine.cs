@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using MonteCarloCore.Jobs;
@@ -7,6 +8,7 @@ namespace MonteCarloCore
 {
     public static class JobEngine
     {
+        public static Random Rand = new Random();
         private static Queue<Job> _jobs = new Queue<Job>();
         private static List<JobEngineThread> _threads = new List<JobEngineThread>();
 

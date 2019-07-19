@@ -9,7 +9,7 @@ namespace MonteCarloCore.Jobs
             Box = box;
         }
 
-        public int Cycles = 100;
+        public int Cycles = 100000;
         public int MovesPerCycle = 5;
         private int _currentCycle = 0;
 
@@ -34,6 +34,7 @@ namespace MonteCarloCore.Jobs
                 if (IsMoveAcceptable(previousEnergy, energy))
                 {
                     previousEnergy = energy;
+                    OnChanged();
                 }
                 else
                 {
@@ -42,9 +43,15 @@ namespace MonteCarloCore.Jobs
             }
         }
 
+        public event SimulationBoxHandler SimulationBoxChangedEvent;
+        private void OnChanged()
+        {
+            SimulationBoxChangedEvent?.Invoke(Box);
+        }
+
         private bool IsMoveAcceptable(double previousEnergy, double currentEnergy)
         {
-            return currentEnergy < previousEnergy;
+            return currentEnergy <= previousEnergy;
         }
 
         public override int GetPercentComplete()

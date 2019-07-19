@@ -11,8 +11,6 @@ namespace MonteCarloCore.Simulation
             Y = y;
         }
 
-        Random _rand = new Random();
-
         // Center of Object
         public double X;
         public double Y;
@@ -21,7 +19,7 @@ namespace MonteCarloCore.Simulation
 
         public SimulationMove GetRandomMove()
         {
-            int index = _rand.Next(MoveList.Count - 1);
+            int index = JobEngine.Rand.Next(MoveList.Count - 1);
             return MoveList[index];
         }
 
