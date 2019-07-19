@@ -27,12 +27,19 @@ namespace MonteCarloSimulator
         private void runSimulationButton_Click(object sender, EventArgs e)
         {
             var box = new SimulationBox(100,100,100);
-            box.MonteCarloObjects.Add(new Circle(3,3,1));
-            box.MonteCarloObjects.Add(new Circle(51,21,1));
-            box.MonteCarloObjects.Add(new Circle(78,10,1));
+            box.MonteCarloObjects.Add(new Circle(7,14,5));
+            box.MonteCarloObjects.Add(new Circle(51,21,5));
+            box.MonteCarloObjects.Add(new Circle(78,10,5));
+
+            UpdateMonteCarloPlot(box);
 
             var newMonteCarloJob = new MonteCarloSimulationJob(box);
             JobEngine.EnqueueNewJob(newMonteCarloJob);
+        }
+
+        private void UpdateMonteCarloPlot(SimulationBox box)
+        {
+            mySimulationBoxControl1.DrawSimulationBox(box);
         }
 
         private void NewJob_ProgressEvent(Job reportingJob)

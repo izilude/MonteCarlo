@@ -35,6 +35,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.mySimulationBoxControl1 = new MonteCarloSimulator.MySimulationBoxControl();
             this.SuspendLayout();
             // 
             // runSimulationButton
@@ -101,11 +102,19 @@
             this.label5.TabIndex = 6;
             this.label5.Text = "--";
             // 
+            // mySimulationBoxControl1
+            // 
+            this.mySimulationBoxControl1.Location = new System.Drawing.Point(325, 6);
+            this.mySimulationBoxControl1.Name = "mySimulationBoxControl1";
+            this.mySimulationBoxControl1.Size = new System.Drawing.Size(503, 471);
+            this.mySimulationBoxControl1.TabIndex = 7;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(840, 489);
+            this.Controls.Add(this.mySimulationBoxControl1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -129,6 +138,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+        private MySimulationBoxControl mySimulationBoxControl1;
     }
 }
 
