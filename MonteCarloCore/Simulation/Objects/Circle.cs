@@ -39,7 +39,7 @@ namespace MonteCarloCore.Simulation.Objects
             if (dx > box.XLength / 2) dx = box.XLength - dx;
 
             double dy = Math.Abs(circle.Y - Y);
-            if (dy > box.YLength / 2) dx = box.YLength - dy;
+            if (dy > box.YLength / 2) dy = box.YLength - dy;
 
             double r = dx * dx + dy * dy;
             double energy = r < (circle.Radius + Radius) ? 100000 : 0;
