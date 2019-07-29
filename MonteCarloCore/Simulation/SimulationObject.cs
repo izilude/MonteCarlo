@@ -5,10 +5,16 @@ namespace MonteCarloCore.Simulation
 {
     public abstract class SimulationObject
     {
+        public double PreviousX;
+        public double PreviousY;
+
         protected SimulationObject(double x, double y)
         {
             X = x;
             Y = y;
+
+            PreviousX = x;
+            PreviousY = y;
         }
 
         // Center of Object
@@ -24,5 +30,17 @@ namespace MonteCarloCore.Simulation
         }
 
         public abstract double GetInteractionEnergy(SimulationBox box, SimulationObject iteractionObject);
+
+        public virtual void Reset()
+        {
+            X = PreviousX;
+            Y = PreviousY;
+        }
+
+        public virtual void AcceptMove()
+        {
+            PreviousY = Y;
+            PreviousX = X;
+        }
     }
 }

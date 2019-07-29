@@ -1,4 +1,5 @@
-﻿using MonteCarloCore.Simulation;
+﻿using System;
+using MonteCarloCore.Simulation;
 
 namespace MonteCarloCore.Jobs
 {
@@ -9,8 +10,8 @@ namespace MonteCarloCore.Jobs
             Box = box;
         }
 
-        public int Cycles = 100000;
-        public int MovesPerCycle = 5;
+        public int Cycles = 1000000000;
+        public int MovesPerCycle = 1;
         private int _currentCycle = 0;
 
         public SimulationBox Box;
@@ -34,6 +35,7 @@ namespace MonteCarloCore.Jobs
                 if (IsMoveAcceptable(previousEnergy, energy))
                 {
                     previousEnergy = energy;
+                    Box.AcceptAllMoves();
                     OnChanged();
                 }
                 else

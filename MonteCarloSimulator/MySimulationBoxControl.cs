@@ -16,7 +16,7 @@ namespace MonteCarloSimulator
     {
         private SimulationBox _box;
 
-        public int ChangesPerUpdate = 50;
+        public int ChangesPerUpdate = 1000;
         private int _currentNumberOfChanges = 0;
         
         public Pen BorderPen = new Pen(Color.Black);
@@ -50,10 +50,10 @@ namespace MonteCarloSimulator
                     var circle = mcObject as Circle;
 
                     // center of sphere
-                    int xPix = (int) (pixelsPerWidth * mcObject.X);
-                    int yPix = (int) (pixelsPerHeight * mcObject.Y);
-                    int width = (int) (pixelsPerWidth * circle.Radius);
-                    int height = (int) (pixelsPerHeight * circle.Radius);
+                    int xPix = (int) (pixelsPerWidth * mcObject.PreviousX);
+                    int yPix = (int) (pixelsPerHeight * mcObject.PreviousY);
+                    int width = (int) (2*pixelsPerWidth * circle.Radius);
+                    int height = (int) (2*pixelsPerHeight * circle.Radius);
                     var rect = new Rectangle(xPix-width/2, yPix-height/2, width, height);
 
                     e.Graphics.FillEllipse(Brushes.Red,rect);
@@ -69,7 +69,7 @@ namespace MonteCarloSimulator
             {
                 _currentNumberOfChanges = 0;
                 _box = box;
-                Invalidate();
+                Refresh();
             }
         }
     }

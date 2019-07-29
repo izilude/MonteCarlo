@@ -46,7 +46,18 @@ namespace MonteCarloCore.Simulation
 
         public void RejectAllMoves()
         {
-            
+            foreach (var mcObject in MonteCarloObjects)
+            {
+                mcObject.Reset();
+            }
+        }
+
+        public void AcceptAllMoves()
+        {
+            foreach (var mcObject in MonteCarloObjects)
+            {
+                mcObject.AcceptMove();
+            }
         }
     }
 }

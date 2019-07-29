@@ -11,8 +11,7 @@ namespace MonteCarloCore.Simulation.Objects
             : base(x,y)
         {
             Radius = radius;
-            MoveList.Add(new Translation {MaxDistance = 1});
-            MoveList.Add(new Translation { MaxDistance = 0.1 });
+            MoveList.Add(new Translation {MaxDistance = 20});
         }
 
         public override double GetInteractionEnergy(SimulationBox box, SimulationObject interactingObject)
@@ -41,10 +40,17 @@ namespace MonteCarloCore.Simulation.Objects
             double dy = Math.Abs(circle.Y - Y);
             if (dy > box.YLength / 2) dy = box.YLength - dy;
 
-            double r = dx * dx + dy * dy;
-            double energy = r < (circle.Radius + Radius) ? 100000 : 0;
+            double r = Math.Sqrt(dx * dx + dy * dy);
 
-            return energy;
+            if (r > circle.Radius + Radius)
+            {
+                return 0;
+            }
+
+            double slope = (10 - 100)/(circle.Radius + Radius);
+            double intercept = 100;
+
+            return slope* r + intercept;
         }
     }
 }
