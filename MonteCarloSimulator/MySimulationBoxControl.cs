@@ -16,6 +16,9 @@ namespace MonteCarloSimulator
     {
         private SimulationBox _box;
 
+        public int ChangesPerUpdate = 50;
+        private int _currentNumberOfChanges = 0;
+        
         public Pen BorderPen = new Pen(Color.Black);
         public Brush BackgroundBrush = new SolidBrush(Color.LightBlue);
 
@@ -60,8 +63,14 @@ namespace MonteCarloSimulator
 
         public void DrawSimulationBox(SimulationBox box)
         {
-            _box = box;
-            Invalidate();
+            _currentNumberOfChanges++;
+
+            if (_currentNumberOfChanges > ChangesPerUpdate)
+            {
+                _currentNumberOfChanges = 0;
+                _box = box;
+                Invalidate();
+            }
         }
     }
 }
