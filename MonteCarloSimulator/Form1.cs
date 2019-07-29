@@ -26,22 +26,26 @@ namespace MonteCarloSimulator
 
         private void runSimulationButton_Click(object sender, EventArgs e)
         {
-            var box = new SimulationBox(100,100,100);
+            var widthHeight = 100;
 
-            
+            var box = new SimulationBox(widthHeight, widthHeight, widthHeight);
 
-            box.MonteCarloObjects.Add(new Circle(7,14,5));
-            box.MonteCarloObjects.Add(new Circle(51,21,5));
-            box.MonteCarloObjects.Add(new Circle(78,10,5));
-            box.MonteCarloObjects.Add(new Circle(7, 14, 5));
-            box.MonteCarloObjects.Add(new Circle(51, 21, 5));
-            box.MonteCarloObjects.Add(new Circle(78, 10, 5));
-            box.MonteCarloObjects.Add(new Circle(7, 14, 5));
-            box.MonteCarloObjects.Add(new Circle(51, 21, 5));
-            box.MonteCarloObjects.Add(new Circle(78, 10, 5));
-            box.MonteCarloObjects.Add(new Circle(7, 14, 5));
-            box.MonteCarloObjects.Add(new Circle(51, 21, 5));
-            box.MonteCarloObjects.Add(new Circle(78, 10, 5));
+            var radius = 10;
+            int N = 25;
+
+            double x = 0;
+            double y = 0;
+
+            for (int i = 0; i < N; i++)
+            {
+                box.MonteCarloObjects.Add(new Circle(x,y, radius));
+                x += 2*radius;
+                if (x > widthHeight)
+                {
+                    x = 0;
+                    y += 2*radius;
+                }
+            }
 
             UpdateMonteCarloPlot(box);
 

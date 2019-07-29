@@ -16,7 +16,7 @@ namespace MonteCarloSimulator
     {
         private SimulationBox _box;
 
-        public int ChangesPerUpdate = 1000;
+        public int ChangesPerUpdate = 1;
         private int _currentNumberOfChanges = 0;
         
         public Pen BorderPen = new Pen(Color.Black);
