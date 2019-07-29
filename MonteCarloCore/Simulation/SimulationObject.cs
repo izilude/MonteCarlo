@@ -23,8 +23,6 @@ namespace MonteCarloCore.Simulation
             return MoveList[index];
         }
 
-        public abstract double GetPotentialEnergy(double x, double y);
-
-        public abstract double GetEnergy(SimulationBox box);
+        public abstract double GetInteractionEnergy(SimulationBox box, SimulationObject iteractionObject);
     }
 }

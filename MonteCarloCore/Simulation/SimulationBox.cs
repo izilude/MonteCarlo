@@ -27,34 +27,18 @@ namespace MonteCarloCore.Simulation
             return MonteCarloObjects[index];
         }
 
-        public void CalculatePotentialEnergy()
-        {
-            for (int i = 0; i < Divisions; i++)
-            {
-                for (int j = 0; j < Divisions; j++)
-                {
-                    PotentialEnergy[i, j] = 0;
-
-                    double x = i * XLength / Divisions;
-                    double y = i * YLength / Divisions;
-
-                    foreach (var mcObject in MonteCarloObjects)
-                    {
-                        PotentialEnergy[i, j] += mcObject.GetPotentialEnergy(x,y);
-                    }
-                }
-            }
-        }
-
         public double CalculateEnergy()
         {
             double energy = 0;
 
-            CalculatePotentialEnergy();
-
-            foreach (var mcObject in MonteCarloObjects)
+            for (var i = 0; i < MonteCarloObjects.Count; i++)
             {
-                energy += mcObject.GetEnergy(this);
+                var mcObject1 = MonteCarloObjects[i];
+                for (var j = i+1; j < MonteCarloObjects.Count; j++)
+                {
+                    var mcObject2 = MonteCarloObjects[j];
+                    energy += mcObject1.GetInteractionEnergy(this, mcObject2);
+                }
             }
 
             return energy;
