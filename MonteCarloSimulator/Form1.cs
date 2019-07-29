@@ -31,7 +31,7 @@ namespace MonteCarloSimulator
             var box = new SimulationBox(widthHeight, widthHeight, widthHeight);
 
             var radius = 10;
-            int N = 25;
+            int N = 10;
 
             double x = 0;
             double y = 0;
@@ -44,6 +44,18 @@ namespace MonteCarloSimulator
                 {
                     x = 0;
                     y += 2*radius;
+                }
+            }
+
+            radius = 4;
+            for (int i = 0; i < 2*N; i++)
+            {
+                box.MonteCarloObjects.Add(new Circle(x, y, radius));
+                x += 2 * radius;
+                if (x > widthHeight)
+                {
+                    x = 0;
+                    y += 2 * radius;
                 }
             }
 
