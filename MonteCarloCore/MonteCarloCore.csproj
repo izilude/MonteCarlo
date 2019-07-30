@@ -45,6 +45,7 @@
     <Compile Include="JobEngineThread.cs" />
     <Compile Include="Jobs\Job.cs" />
     <Compile Include="Jobs\MonteCarloSimulationJob.cs" />
+    <Compile Include="Jobs\MonteCarloSimulationJobAnnealed.cs" />
     <Compile Include="Simulation\Moves\Translation.cs" />
     <Compile Include="Simulation\Objects\Circle.cs" />
     <Compile Include="Simulation\Objects\CircleWithPotential.cs" />

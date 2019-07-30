@@ -38,7 +38,7 @@ namespace MonteCarloSimulator
 
             for (int i = 0; i < N; i++)
             {
-                box.MonteCarloObjects.Add(new Circle(x,y, radius));
+                box.MonteCarloObjects.Add(new CircleWithPotential(x,y, radius));
                 x += 2*radius;
                 if (x > widthHeight)
                 {
@@ -61,7 +61,7 @@ namespace MonteCarloSimulator
 
             UpdateMonteCarloPlot(box);
 
-            var newMonteCarloJob = new MonteCarloSimulationJob(box);
+            var newMonteCarloJob = new MonteCarloSimulationJobAnnealed(box);
             newMonteCarloJob.SimulationBoxChangedEvent += NewMonteCarloJob_SimulationBoxChangedEvent;
             JobEngine.EnqueueNewJob(newMonteCarloJob);
         }

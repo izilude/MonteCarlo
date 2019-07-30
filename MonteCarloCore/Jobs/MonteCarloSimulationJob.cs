@@ -51,7 +51,7 @@ namespace MonteCarloCore.Jobs
             SimulationBoxChangedEvent?.Invoke(Box);
         }
 
-        private bool IsMoveAcceptable(double previousEnergy, double currentEnergy)
+        protected virtual bool IsMoveAcceptable(double previousEnergy, double currentEnergy)
         {
             return currentEnergy <= previousEnergy;
         }
