@@ -47,6 +47,7 @@
     <Compile Include="Jobs\MonteCarloSimulationJob.cs" />
     <Compile Include="Simulation\Moves\Translation.cs" />
     <Compile Include="Simulation\Objects\Circle.cs" />
+    <Compile Include="Simulation\Objects\CircleWithPotential.cs" />
     <Compile Include="Simulation\SimulationMove.cs" />
     <Compile Include="Simulation\SimulationObject.cs" />
     <Compile Include="Simulation\SimulationBox.cs" />

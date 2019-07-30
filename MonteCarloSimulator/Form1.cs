@@ -50,7 +50,7 @@ namespace MonteCarloSimulator
             radius = 4;
             for (int i = 0; i < 2*N; i++)
             {
-                box.MonteCarloObjects.Add(new Circle(x, y, radius));
+                box.MonteCarloObjects.Add(new CircleWithPotential(x, y, radius));
                 x += 2 * radius;
                 if (x > widthHeight)
                 {
