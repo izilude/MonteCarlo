@@ -29,13 +29,8 @@
         private void InitializeComponent()
         {
             this.runSimulationButton = new System.Windows.Forms.Button();
-            this.resultLabel = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.mySimulationBoxControl1 = new MonteCarloSimulator.MySimulationBoxControl();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.SuspendLayout();
             // 
             // runSimulationButton
@@ -48,97 +43,39 @@
             this.runSimulationButton.UseVisualStyleBackColor = true;
             this.runSimulationButton.Click += new System.EventHandler(this.runSimulationButton_Click);
             // 
-            // resultLabel
-            // 
-            this.resultLabel.AutoSize = true;
-            this.resultLabel.Location = new System.Drawing.Point(184, 29);
-            this.resultLabel.Name = "resultLabel";
-            this.resultLabel.Size = new System.Drawing.Size(18, 17);
-            this.resultLabel.TabIndex = 1;
-            this.resultLabel.Text = "--";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(184, 59);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(18, 17);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "--";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(184, 86);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(18, 17);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "--";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(184, 117);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(18, 17);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "--";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(184, 149);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(18, 17);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "--";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(184, 179);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(18, 17);
-            this.label5.TabIndex = 6;
-            this.label5.Text = "--";
-            // 
             // mySimulationBoxControl1
             // 
-            this.mySimulationBoxControl1.Location = new System.Drawing.Point(325, 6);
+            this.mySimulationBoxControl1.Location = new System.Drawing.Point(599, 12);
             this.mySimulationBoxControl1.Name = "mySimulationBoxControl1";
-            this.mySimulationBoxControl1.Size = new System.Drawing.Size(503, 471);
+            this.mySimulationBoxControl1.Size = new System.Drawing.Size(636, 636);
             this.mySimulationBoxControl1.TabIndex = 7;
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(12, 654);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(1223, 28);
+            this.progressBar1.TabIndex = 8;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(840, 489);
+            this.ClientSize = new System.Drawing.Size(1247, 692);
+            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.mySimulationBoxControl1);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.resultLabel);
             this.Controls.Add(this.runSimulationButton);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.Button runSimulationButton;
-        private System.Windows.Forms.Label resultLabel;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
         private MySimulationBoxControl mySimulationBoxControl1;
+        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }
 

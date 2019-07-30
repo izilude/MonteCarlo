@@ -27,8 +27,6 @@ namespace MonteCarloSimulator
         public MySimulationBoxControl()
         {
             InitializeComponent();
-
-            _area = new Rectangle(this.Location, this.Size);
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -71,6 +69,11 @@ namespace MonteCarloSimulator
                 _box = box;
                 Refresh();
             }
+        }
+
+        private void MySimulationBoxControl_Resize(object sender, EventArgs e)
+        {
+            _area = new Rectangle(new Point(0, 0), this.Size);
         }
     }
 }

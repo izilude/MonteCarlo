@@ -36,6 +36,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Name = "MySimulationBoxControl";
             this.Size = new System.Drawing.Size(503, 471);
+            this.Resize += new System.EventHandler(this.MySimulationBoxControl_Resize);
             this.ResumeLayout(false);
 
         }

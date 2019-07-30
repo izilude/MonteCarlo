@@ -10,7 +10,7 @@ namespace MonteCarloCore.Jobs
             Box = box;
         }
 
-        public int Cycles = 1000000000;
+        public int Cycles = 100000;
         public int MovesPerCycle = 1;
         private int _currentCycle = 0;
 
@@ -42,6 +42,8 @@ namespace MonteCarloCore.Jobs
                 {
                     Box.RejectAllMoves();
                 }
+
+                OnProgress();
             }
         }
 
@@ -58,7 +60,7 @@ namespace MonteCarloCore.Jobs
 
         public override int GetPercentComplete()
         {
-            return (int)((double)_currentCycle / Cycles);
+            return (int)(100.0*_currentCycle / Cycles);
         }
     }
 }
