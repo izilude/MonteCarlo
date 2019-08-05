@@ -8,6 +8,10 @@ namespace MonteCarloCore.Simulation
         public double PreviousX;
         public double PreviousY;
 
+        public int Red { get; set; }
+        public int Green { get; set; }
+        public int Blue { get; set; }
+
         protected SimulationObject(double x, double y)
         {
             X = x;
@@ -15,13 +19,15 @@ namespace MonteCarloCore.Simulation
 
             PreviousX = x;
             PreviousY = y;
+
+            MoveList = new List<SimulationMove>();
         }
 
         // Center of Object
-        public double X;
-        public double Y;
+        public double X { get; set; }
+        public double Y { get; set; }
 
-        public List<SimulationMove> MoveList = new List<SimulationMove>();
+        public List<SimulationMove> MoveList { get; set; }
 
         public SimulationMove GetRandomMove()
         {
@@ -30,6 +36,8 @@ namespace MonteCarloCore.Simulation
         }
 
         public abstract double GetInteractionEnergy(SimulationBox box, SimulationObject iteractionObject);
+
+        public abstract SimulationObject Duplicate();
 
         public virtual void Reset()
         {

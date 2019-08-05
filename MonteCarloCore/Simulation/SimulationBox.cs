@@ -1,26 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace MonteCarloCore.Simulation
 {
+    [TypeConverter(typeof(ExpandableObjectConverter))]
     public class SimulationBox
     {
-        public SimulationBox(double xLength, double yLength, int divisions)
+        public SimulationBox()
         {
-            PotentialEnergy = new double[divisions,divisions];
-            XLength = xLength;
-            YLength = yLength;
-            Divisions = divisions;
+
         }
 
-        public int Divisions { get; private set; }
-        public double XLength { get; private set; }
-        public double YLength { get; private set; }
+        public SimulationBox(double xLength, double yLength)
+        {
+            XLength = xLength;
+            YLength = yLength;
+        }
 
-        protected double[,] PotentialEnergy;
+        public double XLength { get; set; } = 100;
+        public double YLength { get; set; } = 100;
 
         public List<SimulationObject> MonteCarloObjects = new List<SimulationObject>();
-
         public SimulationObject GetRandomObject()
         {
             int index = JobEngine.Rand.Next(MonteCarloObjects.Count);   

@@ -5,7 +5,13 @@ namespace MonteCarloCore.Jobs
 {
     public class MonteCarloSimulationJobAnnealed : MonteCarloSimulationJob
     {
-        public double Temperature = 0.5;
+        public double Temperature { get; set; } = 0.5;
+
+        public MonteCarloSimulationJobAnnealed()
+            : base (new SimulationBox())
+        {
+
+        }
 
         public MonteCarloSimulationJobAnnealed(SimulationBox box) 
             : base(box)

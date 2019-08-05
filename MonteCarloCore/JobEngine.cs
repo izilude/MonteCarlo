@@ -9,13 +9,13 @@ namespace MonteCarloCore
     public static class JobEngine
     {
         public static Random Rand = new Random();
-        private static Queue<Job> _jobs = new Queue<Job>();
+        private static readonly Queue<Job> _jobs = new Queue<Job>();
         private static List<JobEngineThread> _threads = new List<JobEngineThread>();
 
         public static void Start()
         {
             _threads.Add(new JobEngineThread(_jobs, "Engine Thread 1"));
-            //_threads.Add(new JobEngineThread(_jobs, "Engine Thread 2"));
+            _threads.Add(new JobEngineThread(_jobs, "Engine Thread 2"));
         }
 
         public static void Stop()

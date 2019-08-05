@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using MonteCarloCore.Simulation;
 using MonteCarloCore.Simulation.Objects;
@@ -16,9 +10,6 @@ namespace MonteCarloSimulator
     {
         private SimulationBox _box;
 
-        public int ChangesPerUpdate = 1;
-        private int _currentNumberOfChanges = 0;
-        
         public Pen BorderPen = new Pen(Color.Black);
         public Brush BackgroundBrush = new SolidBrush(Color.LightBlue);
 
@@ -54,21 +45,16 @@ namespace MonteCarloSimulator
                     int height = (int) (2*pixelsPerHeight * circle.Radius);
                     var rect = new Rectangle(xPix-width/2, yPix-height/2, width, height);
 
-                    e.Graphics.FillEllipse(Brushes.Red,rect);
+                    var color = Color.FromArgb(mcObject.Red, mcObject.Green, mcObject.Blue);
+                    e.Graphics.FillEllipse(new SolidBrush(color), rect);
                 }
             }
         }
 
         public void DrawSimulationBox(SimulationBox box)
         {
-            _currentNumberOfChanges++;
-
-            if (_currentNumberOfChanges > ChangesPerUpdate)
-            {
-                _currentNumberOfChanges = 0;
-                _box = box;
-                Refresh();
-            }
+            _box = box;
+            Refresh();
         }
 
         private void MySimulationBoxControl_Resize(object sender, EventArgs e)

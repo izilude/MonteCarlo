@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using MonteCarloCore.Simulation;
 
 namespace MonteCarloCore.Jobs
@@ -10,11 +11,12 @@ namespace MonteCarloCore.Jobs
             Box = box;
         }
 
-        public int Cycles = 100000;
-        public int MovesPerCycle = 1;
+
+        public int Cycles { get; set; } = 100000;
+        public int MovesPerCycle { get; set; } = 1;
         private int _currentCycle = 0;
 
-        public SimulationBox Box;
+        public SimulationBox Box { get; set; }
 
         protected override void RunInternal()
         {

@@ -4,8 +4,8 @@ namespace MonteCarloCore.Simulation.Objects
 {
     public class CircleWithPotential : Circle
     {
-        public double MinimumPotentialDistance = 0;
-        public double PotentialStrength = 1;
+        public double MinimumPotentialDistance { get; set; } = 0;
+        public double PotentialStrength { get; set; } = 1;
 
         public CircleWithPotential(double x, double y, double radius) 
             : base(x, y, radius)
@@ -26,6 +26,18 @@ namespace MonteCarloCore.Simulation.Objects
             }
 
             return energy;
+        }
+
+        public override SimulationObject Duplicate()
+        {
+            var newCircle = new CircleWithPotential(X, Y, Radius);
+            newCircle.MinimumPotentialDistance = MinimumPotentialDistance;
+            newCircle.PotentialStrength = PotentialStrength;
+            newCircle.Red = Red;
+            newCircle.Green = Green;
+            newCircle.Blue = Blue;
+            newCircle.MoveList = MoveList;
+            return newCircle;
         }
 
         private double CirclePotentialInteraction(SimulationBox box, CircleWithPotential circle)

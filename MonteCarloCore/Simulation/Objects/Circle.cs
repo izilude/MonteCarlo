@@ -5,13 +5,15 @@ namespace MonteCarloCore.Simulation.Objects
 {
     public class Circle : SimulationObject
     {
-        public double Radius;
+        public double Radius { get; set; }
 
         public Circle(double x, double y, double radius) 
             : base(x,y)
         {
             Radius = radius;
-            MoveList.Add(new Translation {MaxDistance = 20});
+            MoveList.Add(new Translation() { MaxDistance = 1});
+            MoveList.Add(new Translation() { MaxDistance = 10 });
+            MoveList.Add(new Translation() { MaxDistance = 50 });
         }
 
         public override double GetInteractionEnergy(SimulationBox box, SimulationObject interactingObject)
@@ -30,6 +32,16 @@ namespace MonteCarloCore.Simulation.Objects
             
 
             return energy;
+        }
+
+        public override SimulationObject Duplicate()
+        {
+            var newCircle = new Circle(X, Y, Radius);
+            newCircle.Red = Red;
+            newCircle.Green = Green;
+            newCircle.Blue = Blue;
+            newCircle.MoveList = MoveList;
+            return newCircle;
         }
 
         private double CircleInteraction(SimulationBox box, Circle circle)

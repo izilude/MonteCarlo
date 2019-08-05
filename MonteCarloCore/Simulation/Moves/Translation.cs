@@ -4,7 +4,7 @@ namespace MonteCarloCore.Simulation.Moves
 {
     public class Translation : SimulationMove
     {
-        public double MaxDistance = 1;
+        public double MaxDistance { get; set; } = 10;
 
         public override void ApplyMove(SimulationBox box, SimulationObject mcObject)
         {
